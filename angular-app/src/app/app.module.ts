@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 // import {MatPaginatorModule} from '@angular/material/paginator';
 
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
      CourseComponent,
+     LoginComponent,
    
      
   ],
