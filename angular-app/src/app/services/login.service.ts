@@ -1,4 +1,4 @@
-import { User } from './../models/User';
+import { User } from '../models/User';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -24,4 +24,8 @@ export class LoginService {
       return user;
     }));
   }
+  public get currentUserValue(): User {
+    return this.currentUserSubject.value;
+}
+
 }

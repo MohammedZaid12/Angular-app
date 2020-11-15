@@ -1,5 +1,5 @@
 import { CourseComponent } from './course/course.component';
-import { CourseServiceService } from './course-service.service';
+import { CourseServiceService } from './services/course-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Pipe } from '@angular/core';
 
@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 
 // import {MatPaginatorModule} from '@angular/material/paginator';
@@ -28,6 +28,7 @@ import { LoginComponent } from './login/login.component';
     NgxPaginationModule,
     Ng2SearchPipeModule,
     FormsModule,
+    ReactiveFormsModule 
     
 
 
