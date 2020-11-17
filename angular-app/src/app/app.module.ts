@@ -11,6 +11,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { CommonModule } from '@angular/common';
+import { LogoutComponent } from './logout/logout.component';
+import { AlertComponent } from './alert/alert.component';
 
 // import {MatPaginatorModule} from '@angular/material/paginator';
 
@@ -19,6 +21,8 @@ import { CommonModule } from '@angular/common';
     AppComponent,
      CourseComponent,
      LoginComponent,
+     LogoutComponent,
+     AlertComponent,
    
      
   ],

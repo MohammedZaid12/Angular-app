@@ -21,11 +21,10 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute) {
 
-    //  if(this.service.currentUserValue){
-    //    console.log(this.service.currentUserValue);
-
-    //    this.router.navigate(['/courses']);
-    //  }
+     if(this.service.currentUserValue){
+    
+       this.router.navigate(['/courses']);
+     }
 
 
   }

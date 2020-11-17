@@ -10,6 +10,7 @@ export class LoginService {
 
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
+
   constructor(private http:HttpClient) { 
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
@@ -23,6 +24,10 @@ export class LoginService {
       this.currentUserSubject.next(user);
       return user;
     }));
+  }
+  logout(){
+    localStorage.removeItem('currentUser');
+    this.currentUserSubject.next(null);
   }
   public get currentUserValue(): User {
     return this.currentUserSubject.value;
