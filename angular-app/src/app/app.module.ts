@@ -10,6 +10,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { CommonModule } from '@angular/common';
 
 // import {MatPaginatorModule} from '@angular/material/paginator';
 
@@ -28,7 +29,9 @@ import { LoginComponent } from './login/login.component';
     NgxPaginationModule,
     Ng2SearchPipeModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    CommonModule
+     
     
 
 

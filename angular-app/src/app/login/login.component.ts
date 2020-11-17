@@ -11,51 +11,57 @@ import { first } from 'rxjs/operators';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm:FormGroup
+  loginForm: FormGroup
   loading = false;
   submitted = false;
-  returnUrl:string;
+  returnUrl: string;
   constructor(
-    private formBuilder:FormBuilder , 
-    private service:LoginService,
-    private router:Router,
-    private route:ActivatedRoute) {
+    private formBuilder: FormBuilder,
+    private service: LoginService,
+    private router: Router,
+    private route: ActivatedRoute) {
 
-       if(this.service.currentUserValue){
-         this.router.navigate(['/']);
-       }
+    //  if(this.service.currentUserValue){
+    //    console.log(this.service.currentUserValue);
 
-    
+    //    this.router.navigate(['/courses']);
+    //  }
+
+
   }
 
   ngOnInit(): void {
-  
-  this.loginForm = this.formBuilder.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required]
-});
+
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
   // easy access to fields
-  get controls(){
+  get controls() {
     return this.loginForm.controls;
   }
-    onSubmit(){
-      this.submitted = true;
+  onSubmit() {
+    this.submitted = true;
 
-      // break here if form is  not incorrect
-      if(this.loginForm.invalid){
-        return;
-      }
-      this.loading = true;
-      this.service.login(
-        this.controls.username.value , this.controls.password.value)
-        .pipe(first())
-        .subscribe({
-          next:() =>{
-            const returnUrl = this.route.snapshot.queryParams['returnUrl']
-            || '/';
-            this.router.navigateByUrl(returnUrl);
-          }
-        })  
+    // break here if form is  not incorrect
+    if (this.loginForm.invalid) {
+      return;
     }
+    this.loading = true;
+    this.service.login(
+      this.controls.username.value, this.controls.password.value)
+      .pipe(first())
+      .subscribe({
+        next: (data) => {
+          console.log(data.token);
+
+          if (data.token && data.token !== null && data.token !== '') {
+            this.router.navigate(['/courses'])
+          }
+
+
+        }
+      })
+  }
 }
