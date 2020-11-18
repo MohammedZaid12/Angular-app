@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { AlertService } from '../services/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private service: LoginService,
     private router: Router,
+    private alert:AlertService,
     private route: ActivatedRoute) {
 
      if(this.service.currentUserValue){
@@ -42,6 +44,7 @@ export class LoginComponent implements OnInit {
   }
   onSubmit() {
     this.submitted = true;
+    this.alert.clear();
 
     // break here if form is  not incorrect
     if (this.loginForm.invalid) {
@@ -53,13 +56,15 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: (data) => {
-          console.log(data.token);
-
           if (data.token && data.token !== null && data.token !== '') {
             this.router.navigate(['/courses'])
           }
 
 
+        },
+        error:error =>{
+          this.alert.error(error);
+          this.loading = false;
         }
       })
   }

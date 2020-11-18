@@ -17,7 +17,7 @@ private keepAfterRouteChange=false;
           this.keepAfterRouteChange = false;
       } else {
           // clear alert message
-          // this.clear();
+          this.clear();
       }
       }
     })
@@ -25,5 +25,13 @@ private keepAfterRouteChange=false;
    getAlert():Observable<any>{
      return this.subject.asObservable();
    }
-   sucess(message:string, keepAfterRouteChange=false){}
+   sucess(message:string, keepAfterRouteChange=false){
+     this.subject.next({type:'success' , test:message});
+   }
+   error(message:string, keepAfterRouteChange=false){
+    this.subject.next({type:'error' , test:message});
+  }
+  clear(){
+    this.subject.next();
+  }
 }
