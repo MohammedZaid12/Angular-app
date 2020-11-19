@@ -15,7 +15,6 @@ constructor(private service:CourseServiceService){
 
   this.service.getCourses().subscribe(data=>{
    this.data = data;
-   console.log(this.data);
   });
   
 }

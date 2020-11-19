@@ -12,8 +12,9 @@ import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { CommonModule } from '@angular/common';
 import { LogoutComponent } from './logout/logout.component';
-import { AlertComponent } from './alert/alert.component';
-
+import {  ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
@@ -22,7 +23,7 @@ import { AlertComponent } from './alert/alert.component';
      CourseComponent,
      LoginComponent,
      LogoutComponent,
-     AlertComponent,
+   
    
      
   ],
@@ -34,7 +35,10 @@ import { AlertComponent } from './alert/alert.component';
     Ng2SearchPipeModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    NgbModule,
      
     
 

@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AlertService } from '../services/alert.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private service: LoginService,
     private router: Router,
-    private alert:AlertService,
+    private alert:ToastrService,
+    
     private route: ActivatedRoute) {
 
      if(this.service.currentUserValue){
@@ -44,7 +46,7 @@ export class LoginComponent implements OnInit {
   }
   onSubmit() {
     this.submitted = true;
-    this.alert.clear();
+   
 
     // break here if form is  not incorrect
     if (this.loginForm.invalid) {
@@ -56,14 +58,15 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: (data) => {
-          if (data.token && data.token !== null && data.token !== '') {
+          if (data && data.token !== null && data.token !== '') {
             this.router.navigate(['/courses'])
           }
 
 
         },
         error:error =>{
-          this.alert.error(error);
+          console.warn(error.error.error);
+          this.alert.error(error.error.error ,'Error');
           this.loading = false;
         }
       })
