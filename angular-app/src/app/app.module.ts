@@ -15,6 +15,8 @@ import { LogoutComponent } from './logout/logout.component';
 import {  ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GridModule } from '@progress/kendo-angular-grid';
+
 // import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
@@ -39,6 +41,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgbModule,
+    GridModule,
      
     
 

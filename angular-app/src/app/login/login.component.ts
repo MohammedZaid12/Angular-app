@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { AlertService } from '../services/alert.service';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -58,6 +59,9 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: (data) => {
+          console.log(data.token);
+          
+
           if (data && data.token !== null && data.token !== '') {
             this.router.navigate(['/courses'])
           }
