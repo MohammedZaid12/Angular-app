@@ -59,9 +59,17 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: (data) => {
+<<<<<<< HEAD
       
           if (data && data.token !== null && data.token !== '') {
             this.router.navigate(['/courses']) 
+=======
+          console.log(data.token);
+          
+
+          if (data && data.token !== null && data.token !== '') {
+            this.router.navigate(['/courses'])
+>>>>>>> 787bd3de214e95651677fa6169d0c2c06a191a6b
           }
 
 
