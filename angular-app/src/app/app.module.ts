@@ -1,5 +1,5 @@
 import { CourseComponent } from './course/course.component';
-import { CourseServiceService } from './course-service.service';
+import { CourseServiceService } from './services/course-service.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Pipe } from '@angular/core';
 
@@ -8,7 +8,14 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { CommonModule } from '@angular/common';
+import { LogoutComponent } from './logout/logout.component';
+import {  ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GridModule } from '@progress/kendo-angular-grid';
 
 // import {MatPaginatorModule} from '@angular/material/paginator';
 
@@ -16,6 +23,9 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
      CourseComponent,
+     LoginComponent,
+     LogoutComponent,
+   
    
      
   ],
@@ -26,6 +36,13 @@ import { FormsModule } from '@angular/forms';
     NgxPaginationModule,
     Ng2SearchPipeModule,
     FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    NgbModule,
+    GridModule,
+     
     
 
 
