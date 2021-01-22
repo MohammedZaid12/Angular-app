@@ -1,4 +1,5 @@
-import { User } from '../models/User';
+import { User } from './../models/User';
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -16,9 +17,9 @@ export class LoginService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  login(username,password){
-    let url ='https:/reqres.in/api/login'
-    return this.http.post<User>(url,{username,password}).pipe(
+  login(data:User){
+    let url ='http://localhost:5000/login'
+    return this.http.post<User>(url,{data}).pipe(
       map(user=>{
       localStorage.setItem('currentUser' , JSON.stringify(user));
       this.currentUserSubject.next(user);

@@ -1,5 +1,6 @@
+ import { User } from './../models/User';
 import { LoginService } from '../services/login.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
@@ -13,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  authModel= {} as User;
   loginForm: FormGroup
   loading = false;
   submitted = false;
@@ -22,14 +23,16 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private service: LoginService,
     private router: Router,
-    private alert:ToastrService,
-    
-    private route: ActivatedRoute) {
+    private alert: ToastrService,
+    private route: ActivatedRoute,
+    private injector: Injector) {
 
-     if(this.service.currentUserValue){
-    
-       this.router.navigate(['/courses']);
-     }
+
+
+    if (this.service.currentUserValue) {
+
+      this.router.navigate(['/courses']);
+    }
 
 
   }
@@ -47,30 +50,30 @@ export class LoginComponent implements OnInit {
   }
   onSubmit() {
     this.submitted = true;
-   
+console.log(this.authModel);
+
 
     // break here if form is  not incorrect
     if (this.loginForm.invalid) {
       return;
     }
     this.loading = true;
-    this.service.login(
-      this.controls.username.value, this.controls.password.value)
+    this.service.login(this.authModel)
       .pipe(first())
       .subscribe({
         next: (data) => {
-          console.log(data.token);
-          
+          console.log(data);
 
-          if (data && data.token !== null && data.token !== '') {
-            this.router.navigate(['/courses'])
-          }
+
+          // if (data && data.token !== null && data.token !== '') {
+          //   this.router.navigate(['/courses'])
+          // }
 
 
         },
-        error:error =>{
+        error: error => {
           console.warn(error.error.error);
-          this.alert.error(error.error.error ,'Error');
+          this.alert.error(error.error.error, 'Error');
           this.loading = false;
         }
       })
